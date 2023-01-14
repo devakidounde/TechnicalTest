@@ -1,0 +1,27 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Customer;
+import com.example.demo.entity.Product;
+import com.example.demo.service.ProductService;
+
+@RestController
+@RequestMapping("/product")
+public class Productcontroller 
+{
+	@Autowired
+	public ProductService pservice;
+	
+	@PostMapping("/insert")
+	public ResponseEntity<Product> insertProduct(@RequestBody Product pdt)
+	{
+		Product product = pservice.addProduct(pdt);
+		return ResponseEntity.ok().body(product);
+	}
+}

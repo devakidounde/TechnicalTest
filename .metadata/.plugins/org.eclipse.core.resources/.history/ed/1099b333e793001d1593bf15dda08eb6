@@ -1,0 +1,57 @@
+package com.example.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Repository.ProductRepository;
+
+import com.example.demo.entity.Product;
+import com.example.demo.entity.ProductCategory;
+
+@Service
+public class ServiceImplementation implements ProductServiceI
+{
+	@Autowired
+	public ProductRepository prepo;
+	@Autowired
+	public PCategoryRepository pcrepo;
+	
+	
+	public Product addProduct(Product pdt)
+	{
+		Product product = prepo.save(pdt);
+		return product;
+	}
+	public Product getProductById(Integer id)
+	{
+		//double discountPrice=0,totalPrice=0;
+		ProductCategory productCategory = new ProductCategory();
+		
+		Product product = prepo.findByProductId(id);
+		
+		//if(product.getProductCategory().equals(productCategory.getProductCategory()))
+		//{
+			double discountPrice = (product.getProductPrice() * productCategory.getDiscount()) / 100;
+			product.setDiscount(discountPrice);
+			System.out.println(discountPrice);
+			double totalPrice = product.getProductPrice()-discountPrice;
+			product.setFinalPrice(totalPrice);
+			System.out.println(totalPrice);
+		//}
+		
+		
+		return product;
+	}
+	@Override
+	public void editProductById(Product pdt,int id) 
+	{
+		prepo.save(pdt);
+	}
+	@Override
+	public void deleteProductById(Integer id) 
+	{
+		 prepo.deleteById(id);
+	}
+	
+}

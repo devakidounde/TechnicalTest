@@ -1,0 +1,9 @@
+package com.example.demo.entity;
+
+public class ProductCategory 
+{
+	private String productCategory;
+	private double Discount;
+	private double gst;
+	private int deliveyCharge;
+}

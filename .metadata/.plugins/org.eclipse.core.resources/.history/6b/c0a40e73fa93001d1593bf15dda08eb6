@@ -1,0 +1,45 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class ProductCategory 
+{
+	@Id
+	private String productCategory;
+	private double Discount;
+	private double gst;
+	private int deliveyCharge;
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+	}
+	public double getDiscount() {
+		return Discount;
+	}
+	public void setDiscount(double discount) {
+		Discount = discount;
+	}
+	public double getGst() {
+		return gst;
+	}
+	public void setGst(double gst) {
+		this.gst = gst;
+	}
+	public int getDeliveyCharge() {
+		return deliveyCharge;
+	}
+	public void setDeliveyCharge(int deliveyCharge) {
+		this.deliveyCharge = deliveyCharge;
+	}
+	@Override
+	public String toString() {
+		return "ProductCategory [productCategory=" + productCategory + ", Discount=" + Discount + ", gst=" + gst
+				+ ", deliveyCharge=" + deliveyCharge + "]";
+	}
+	
+	
+}

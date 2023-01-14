@@ -1,0 +1,9 @@
+package com.example.demo.service;
+
+import com.example.demo.entity.ProductCategory;
+
+public interface ProductCategoryService 
+{
+	public ProductCategory getProducCategorytById(Integer id);
+	public ProductCategory addProductCategory(ProductCategory category);
+}
